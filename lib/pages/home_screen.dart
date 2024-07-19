@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/pages/question_screen.dart';
 import 'package:quizapp/widgets/instruction_field.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -53,26 +54,52 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: TextStyle(fontSize: 20),
                           ),
                         ),
-                        InstructionField(main_text:"10 Questions" ,
-                            sub_text: "Questions will be of MCQ Type",
-                            rad_val: 27.5, field: Image.asset('assets/continue.png'),),
-                        InstructionField(main_text:"5 Minutes" ,
+                        InstructionField(
+                          main_text: "10 Questions",
+                          sub_text: "Questions will be of MCQ Type",
+                          rad_val: 27.5,
+                          field: Image.asset('assets/continue.png'),
+                        ),
+                        InstructionField(
+                            main_text: "5 Minutes",
                             sub_text: "Limit is 30 seconds per question",
-                            rad_val: 27.5,field: Image.asset('assets/midnight.png')),
-                        InstructionField(main_text:"For Every Right Answer" ,
-                            sub_text: "",
-                            rad_val: 0, field: Text(' +4 ',
-                              style: TextStyle(fontSize: 35,)),),
-                        InstructionField(main_text:"For Every Wrong Answer" ,
+                            rad_val: 27.5,
+                            field: Image.asset('assets/midnight.png')),
+                        InstructionField(
+                          main_text: "For Every Right Answer",
                           sub_text: "",
-                          rad_val: 0, field: Text(' -1 ',
-                              style: TextStyle(fontSize: 35)),),
-
+                          rad_val: 0,
+                          field: Text(' +4 ',
+                              style:
+                                  TextStyle(fontSize: 35, color: Colors.green)),
+                        ),
+                        InstructionField(
+                          main_text: "For Every Wrong Answer",
+                          sub_text: "",
+                          rad_val: 0,
+                          field: Text(' -1 ',
+                              style: TextStyle(
+                                  fontSize: 35, color: Colors.redAccent)),
+                        ),
                       ],
                     ),
                   ),
                 ),
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.all(25.0),
+                child: Center(
+                    child:  Builder(
+                        builder: (context) =>ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => QuestionScreen()));
+                        },
+                        child: Text(
+                          "START QUIZ",
+                          style: TextStyle(fontSize: 30),
+                        ))),
+              ))
             ],
           ),
         ),
